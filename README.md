@@ -1,10 +1,10 @@
 -Backend Airbnb
-   -MongoDB Connection
-   -User Schema Create
-   -Error Handler To Handle Errors Which Occurs During APIs Request
+    -MongoDB Connection
+    -User Schema Create
+    -Error Handler To Handle Errors Which Occurs During APIs Request
 
-   -USER APIs
-     -Register API
+    -USER APIs
+      -Register API
        -Get Data From Post Request
          -Check Data Is Properly Filled Or Not
        -Install bcrypt
@@ -14,8 +14,7 @@
          -To Genrate Auth Token By Taking User ID
        -Cookies from next/headers
          -To Save Cookies  For 15 Days
-       -Response User Data 
-       
+       -Response User Data     
      -Login API
        -Get Data From Post Request
          -Check Data Is Properly Filled Or Not
