@@ -1,4 +1,39 @@
-This is a [Next.js](https://nextjs.org/) project bootstrapped with [`create-next-app`](https://github.com/vercel/next.js/tree/canary/packages/create-next-app).
+-Backend Airbnb
+  -MongoDB Connection
+  -User Schema Create
+  -Error Handler To Handle Errors Which Occurs During APIs Request
+  -USER APIs
+     -Register API
+       -Get Data From Post Request
+         -Check Data Is Properly Filled Or Not
+       -Install bcrypt
+         -To Hash/Encrypt The Password
+       -Save Data In Database Using User Schema  
+       -Install jwt
+         -To Genrate Auth Token By Taking User ID
+       -Cookies from next/headers
+         -To Save Cookies  For 15 Days
+       -Response User Data 
+       
+     -Login API
+       -Get Data From Post Request
+         -Check Data Is Properly Filled Or Not
+       -Find User Through Email(unique) In Database User Schema 
+       -Used Bcrypt To Compare Password 
+       -Used JWT Genrate Auth Token By Taking User ID
+       -Cookies from next/headers
+          -To Save Cookies 
+       -Response User Data   
+     -About Me API
+       -Create A MiddleWare To AuthUser
+         -Get JWT Token From Saved Cookies
+         -Verify User Using JWT Verify Method
+         -If User Is Verified Return User Else Error Handler Error Provided
+       -Response According To Data and Response Data  
+          
+
+
+<!-- This is a [Next.js](https://nextjs.org/) project bootstrapped with [`create-next-app`](https://github.com/vercel/next.js/tree/canary/packages/create-next-app).
 
 ## Getting Started
 
@@ -33,4 +68,4 @@ You can check out [the Next.js GitHub repository](https://github.com/vercel/next
 
 The easiest way to deploy your Next.js app is to use the [Vercel Platform](https://vercel.com/new?utm_medium=default-template&filter=next.js&utm_source=create-next-app&utm_campaign=create-next-app-readme) from the creators of Next.js.
 
-Check out our [Next.js deployment documentation](https://nextjs.org/docs/deployment) for more details.
+Check out our [Next.js deployment documentation](https://nextjs.org/docs/deployment) for more details. -->
