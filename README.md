@@ -1,8 +1,9 @@
 -Backend Airbnb
-  -MongoDB Connection
-  -User Schema Create
-  -Error Handler To Handle Errors Which Occurs During APIs Request
-  -USER APIs
+   -MongoDB Connection
+   -User Schema Create
+   -Error Handler To Handle Errors Which Occurs During APIs Request
+
+   -USER APIs
      -Register API
        -Get Data From Post Request
          -Check Data Is Properly Filled Or Not
