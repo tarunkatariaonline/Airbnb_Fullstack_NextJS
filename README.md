@@ -1,7 +1,7 @@
 -Backend Airbnb
-    -MongoDB Connection
-    -User Schema Create
-    -Error Handler To Handle Errors Which Occurs During APIs Request
+  -MongoDB Connection
+  -User Schema Create
+  -Error Handler To Handle Errors Which Occurs During APIs Request
 
     -USER APIs
       -Register API
@@ -30,6 +30,9 @@
          -Verify User Using JWT Verify Method
          -If User Is Verified Return User Else Error Handler Error Provided
        -Response According To Data and Response Data  
+
++ frontend of Airbnb
+ + designed header component       
           
 
 

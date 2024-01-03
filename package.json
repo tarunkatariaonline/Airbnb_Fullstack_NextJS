@@ -15,8 +15,11 @@
     "jsonwebtoken": "^9.0.2",
     "mongoose": "^8.0.1",
     "next": "14.0.3",
+    "passport": "^0.6.0",
+    "passport-google-oauth20": "^2.0.0",
     "react": "^18",
-    "react-dom": "^18"
+    "react-dom": "^18",
+    "react-icons": "^4.12.0"
   },
   "devDependencies": {
     "@types/node": "^20",

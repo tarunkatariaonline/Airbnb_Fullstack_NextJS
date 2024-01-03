@@ -4,23 +4,47 @@ const { Schema } = mongoose;
 const userSchema = new Schema({
     profilePic: String,
 
-    username: String,
+    username: {
+        type:String,
+        required:true
+    },
 
-    email: String,
+    email: {
+        type:String,
+        required:true
+    },
 
-    password: String,
+    password: {
+        type:String,
+        required:true
+    },
 
-    cpassword: String,
-    phoneno:Number,
+    cpassword: {
+        type:String,
+        required:true
+    },
+    phoneno:{
+        type:Number,
+        required:true
+    },
 
     isAdmin: {
         type: Boolean,
-        default: false
+        default: false,
+      
     }
     ,
     isHost: {
     type:Boolean,
     default:false
+    },
+    isVerified:{
+        type:Boolean,
+        default:false
+    },
+    isBanned:{
+        type:Boolean,
+        default:false
     }
 
 })
