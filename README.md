@@ -1,7 +1,7 @@
--Backend Airbnb
-  -MongoDB Connection
-  -User Schema Create
-  -Error Handler To Handle Errors Which Occurs During APIs Request
+- Backend Airbnb
+   - MongoDB Connection
+   - User Schema Create
+   - Error Handler To Handle Errors Which Occurs During APIs Request
 
     -USER APIs
       -Register API
@@ -31,8 +31,13 @@
          -If User Is Verified Return User Else Error Handler Error Provided
        -Response According To Data and Response Data  
 
-+ frontend of Airbnb
- + designed header component       
+- frontend of Airbnb
+  - designed header component 
+  - designed search bar component
+  - designed responsive cards
+  - designed responsive layout for mobile
+  - calender from react-date-picker
+  - little worked on hotel rooms component       
           
 
 
