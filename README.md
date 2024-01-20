@@ -31,13 +31,25 @@
          -If User Is Verified Return User Else Error Handler Error Provided
        -Response According To Data and Response Data  
 
+
+- hotel apis :
+  - create hotel api
+  - get hotel api
+  - created destination suggestion api
+  - get destination suggestion
+  
 - frontend of Airbnb
   - designed header component 
   - designed search bar component
   - designed responsive cards
   - designed responsive layout for mobile
-  - calender from react-date-picker
-  - little worked on hotel rooms component       
+  - calendar from react-date-picker
+  - little worked on hotel rooms component   
+     - added calendar
+     - make responsive
+     - review section
+     - host about section
+     - hotel about section     
           
 
 

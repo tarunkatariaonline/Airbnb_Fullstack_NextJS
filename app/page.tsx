@@ -64,13 +64,13 @@ import { Typography } from '@mui/material';
 
 
 
-export default function Home() {
+export default  function Home() {
 
 
 
 
- 
-;
+
+
 
 const today = new Date();
 
@@ -308,7 +308,7 @@ nextDay.setDate(today.getDate() + 2);
       <Carousel responsive={responsive} className=' absolute z-0'   >
       {typesofhotel.map((hoteltype,index)=>{
       return <div key={hoteltype.id} onClick={()=>{setCategory(hoteltype.title)}} className={` ${hoteltype.title===category?" border-b-2":"border-0"}  border-black h-14 w-14   p-1 mx-3  text-xs flex flex-col justify-center  items-center  cursor-pointer`}>
-      <img className={` h-6 w-6  ${hoteltype.title===category?"opacity-100":"  opacity-30"} text-red-500 opacity-30`} src={hoteltype.url}/>
+      <img className={` h-6 w-6  ${hoteltype.title===category?"opacity-100":"  opacity-30"} text-red-500 `} src={hoteltype.url}/>
        {hoteltype.title} 
       </div>
       })} 
@@ -608,8 +608,11 @@ nextDay.setDate(today.getDate() + 2);
 
   {/* calender desktop */}
   
- {showCalender&&<div className=' max-md:hidden  rounded-2xl z-50 absolute  top-52 flex justify-center w-full pt-0 '   >
+ {showCalender&&<div className=' max-md:hidden absolute  left-0 right-0   top-0  bottom-0  rounded-2xl z-50  flex justify-center  pt-0 items-center ' tabIndex={0} onFocus={handlerShowCalender}   >
       
+      <div className=' absolute top-52 ' tabIndex={0} onFocus={(e: React.FocusEvent<HTMLDivElement>)=>{
+             e.stopPropagation();
+            }}>
       <DateRange  className=' rounded-2xl p-4  shadow-2xl'
        
        onChange={item => setDate([item.selection] as any)}
@@ -621,7 +624,7 @@ nextDay.setDate(today.getDate() + 2);
        minDate={new Date() as any}
        maxDate={  maxDateOfCalendar }
      />
-         </div>}
+         </div></div>}
     </div>
   )
 }

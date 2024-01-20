@@ -6,8 +6,28 @@ import { MdRoomService } from 'react-icons/md';
 import { TbGridDots } from "react-icons/tb";
 import { Carousel } from 'react-responsive-carousel';
 import "react-responsive-carousel/lib/styles/carousel.min.css";
+import { DateRange } from 'react-date-range';
+
+import 'react-date-range/dist/styles.css'; // main style file
+import 'react-date-range/dist/theme/default.css'; // theme css file
 const page = ({ params }: { params: { id: string } }) => {
+  const today = new Date();
+
+// Clone the date to avoid modifying the original
+const nextDay = new Date(today);
+const maxDateOfCalendar = new Date(today);
+maxDateOfCalendar.setDate(today.getDate()+700)
+
+nextDay.setDate(today.getDate() + 2);
+   const [date,setDate] = useState([
+    {
+      startDate: new Date(),
+      endDate:nextDay,
+      key: 'selection'
+    }
+  ])
   const [photoTourBox,setPhotoTourBox] = useState(false);
+
 
   const handlerShowPhotoTourBox = ()=>{
     if(photoTourBox){
@@ -15,6 +35,14 @@ const page = ({ params }: { params: { id: string } }) => {
     }else{
       setPhotoTourBox(true);
     }
+  }
+
+  const [showCalendar,setShowCalendar] = useState(false);
+
+  const handlerShowCalendar = ()=>{
+  
+    setShowCalendar(!showCalendar)
+
   }
   return (
    <div className=' min-h-screen w-full'>
@@ -133,7 +161,7 @@ const page = ({ params }: { params: { id: string } }) => {
                   <hr />
 
                   <div className='  w-full   min-h-0  bg-pink-500 flex justify-center p-2'>
-                    <div className='  max-md:w-full  w-3/4  bg-white rounded-2xl p-4 shadow-2xl'>
+                    <div className='  max-md:w-full   w-10/12  bg-white rounded-2xl p-4 shadow-2xl'>
                     <p className=' flex justify-center  text-xl font-semibold uppercase  p-2'>About Host </p>
                     <div className=' flex  justify-center w-full'>
                  <img className=' w-32 h-32 p-2  rounded-full' src="https://images.unsplash.com/photo-1575936123452-b67c3203c357?q=80&w=1000&auto=format&fit=crop&ixlib=rb-4.0.3&ixid=M3wxMjA3fDB8MHxzZWFyY2h8Mnx8aW1hZ2V8ZW58MHx8MHx8fDA%3D" alt="" />
@@ -144,7 +172,7 @@ const page = ({ params }: { params: { id: string } }) => {
                   </div>
              <hr />
                   <div className=' w-full   min-h-0  bg-pink-500 flex justify-center p-2'>
-                    <div className='  max-md:w-full   w-3/4  bg-white rounded-2xl p-4 shadow-2xl'>
+                    <div className='  max-md:w-full   w-10/12 bg-white rounded-2xl p-4 shadow-2xl'>
                     <p className=' flex justify-center  text-xl font-semibold uppercase  p-2'>about hotel </p>
                     <div className=' flex  justify-center w-full'>
                  <img className=' w-32 h-32 p-2  rounded-full' src="https://images.unsplash.com/photo-1575936123452-b67c3203c357?q=80&w=1000&auto=format&fit=crop&ixlib=rb-4.0.3&ixid=M3wxMjA3fDB8MHxzZWFyY2h8Mnx8aW1hZ2V8ZW58MHx8MHx8fDA%3D" alt="" />
@@ -156,20 +184,54 @@ const page = ({ params }: { params: { id: string } }) => {
 
                  <hr />
                  
+       
+           <div className=' max-md:hidden bg-fuchsia-500 w-full  min-h-0 flex justify-center p-2 '>
+           <DateRange  className=' rounded-2xl p-4 w-[90%]  shadow-2xl '
+       
+       onChange={item => setDate([item.selection] as any)}
+      
+     rangeColors={["black"]}
+       ranges={date as any}
+       months={2}
+       direction="horizontal"
+       minDate={new Date() as any}
+       maxDate={  maxDateOfCalendar }
+     />
+
+           </div>
+
+
+           {/* mobile Calender 
+           ---------------- */}
+
+<div className=' md:hidden bg-fuchsia-500 w-full  min-h-0 flex justify-center p-2 '>
+           <DateRange  className='  rounded-2xl  w-[90%]  shadow-2xl '
+       
+       onChange={item => setDate([item.selection] as any)}
+      
+     rangeColors={["black"]}
+       ranges={date as any}
+       months={1}
+       direction="horizontal"
+       minDate={new Date() as any}
+       maxDate={  maxDateOfCalendar }
+     />
+
+           </div>
 
           </div>
 
           <div className=' max-md:hidden  w-2/6 p-4 relative bg-cyan-400    mix-h-full'>
-             <div className='   sticky top-4 bottom-0 right-0 left-0  bg-white  min-h-0 rounded-xl shadow-2xl p-6'>
+             <div className='   sticky top-4 bottom-0 right-0 left-0   bg-white   min-h-0 rounded-xl shadow-2xl p-6'>
              <p className=' text-lg font-semibold '>$ 9,250 night</p>
              <div className='  h-24  mt-2 rounded-xl '>
                <div className=' h-12 w-full rounded-t-xl flex focus:border-2 border-black cursor-pointer ' tabIndex={0}>
-                 <div className=' h-full  w-full  items-center p-2  rounded-tl-xl border-1  focus:border-black focus:border-2 ' tabIndex={0}>
+                 <div className=' h-full  w-full  items-center p-2  rounded-tl-xl border-1  focus:border-black focus:border-2 ' tabIndex={0} onClick={handlerShowCalendar}>
                    <p className=' uppercase text-xs font-semibold'>check-in</p>
                    <p className=' uppercase text-xs font-semibold'>1/13/2021</p>
                  </div>
 
-                 <div  className=' h-full   w-full   items-center p-2 border-1 rounded-tr-xl focus:border-2 focus:border-black' tabIndex={0}>
+                 <div  className=' h-full   w-full   items-center p-2 border-1 rounded-tr-xl focus:border-2 focus:border-black' tabIndex={0}  onClick={handlerShowCalendar}>
                  <p className=' uppercase text-xs font-semibold'>checkOut</p>
                    <p className=' uppercase text-xs font-semibold'>1/13/2021</p>
                  </div>
@@ -202,18 +264,234 @@ const page = ({ params }: { params: { id: string } }) => {
                 <p className=' font-semibold'>$41500</p>
               </div>
              
+
+          
              </div>
-          </div>
+           
+             
+            </div>
         </div>
 
 
+        <div className=' w-full  min-h-0  bg-white'>
+           
+           <div className=' h-16  flex items-center p-10  max-md:p-4 '>
+             <p className=' underline flex items-center text-xl font-medium '> <FaStar className="  mr-3"/> 4.88 • 17 Reviews</p>
+           </div>
 
+
+           <div className=' flex w-full flex-wrap p-10 max-md:p-4 '>
+   
+<div className='  max-md:w-full w-1/2    '>
+
+
+<div className=' flex '>
+  <img className=' p-2 w-16 h-16 rounded-full content-center  object-cover ' src="https://imgv3.fotor.com/images/slider-image/A-blurry-image-of-a-woman-wearing-red.jpg" alt="" />
+
+  <div className='p-2'>
+    <p>A Lady</p>
+    <p className=' text-sm  font-light text-gray-500'>Pune,India</p>
+  </div>
+</div>
+
+<div className=' flex items-center'>
+<div className=' flex'>
+  <FaStar className="  h-3 w-3"/>
+  <FaStar className="  h-3 w-3"/>
+  <FaStar className="  h-3 w-3"/>
+  <FaStar className="  h-3 w-3"/>
+  <FaStar className="  h-3 w-3"/>
+</div>
+ <p className=' ml-2  text-xs font-bold'> • 3 Weeks Ago</p>
+</div>
+
+<div className=' w-full  min-h-0 py-2'>
+ <p>Our stay at the house was lovely and relaxing. Delicious food, and lovely staff. We will be back.</p>
+</div>
+</div>
+<div className='  max-md:w-full w-1/2    '>
+
+
+<div className=' flex '>
+  <img className=' p-2 w-16 h-16 rounded-full content-center  object-cover ' src="https://imgv3.fotor.com/images/slider-image/A-blurry-image-of-a-woman-wearing-red.jpg" alt="" />
+
+  <div className='p-2'>
+    <p>A Lady</p>
+    <p className=' text-sm  font-light text-gray-500'>Pune,India</p>
+  </div>
+</div>
+
+<div className=' flex items-center'>
+<div className=' flex'>
+  <FaStar className="  h-3 w-3"/>
+  <FaStar className="  h-3 w-3"/>
+  <FaStar className="  h-3 w-3"/>
+  <FaStar className="  h-3 w-3"/>
+  <FaStar className="  h-3 w-3"/>
+</div>
+ <p className=' ml-2  text-xs font-bold'> • 3 Weeks Ago</p>
+</div>
+
+<div className=' w-full  min-h-0 py-2'>
+ <p>Our stay at the house was lovely and relaxing. Delicious food, and lovely staff. We will be back.</p>
+</div>
+</div>
+
+
+<div className='  max-md:w-full w-1/2    '>
+
+
+<div className=' flex '>
+  <img className=' p-2 w-16 h-16 rounded-full content-center  object-cover ' src="https://imgv3.fotor.com/images/slider-image/A-blurry-image-of-a-woman-wearing-red.jpg" alt="" />
+
+  <div className='p-2'>
+    <p>A Lady</p>
+    <p className=' text-sm  font-light text-gray-500'>Pune,India</p>
+  </div>
+</div>
+
+<div className=' flex items-center'>
+<div className=' flex'>
+  <FaStar className="  h-3 w-3"/>
+  <FaStar className="  h-3 w-3"/>
+  <FaStar className="  h-3 w-3"/>
+  <FaStar className="  h-3 w-3"/>
+  <FaStar className="  h-3 w-3"/>
+</div>
+ <p className=' ml-2  text-xs font-bold'> • 3 Weeks Ago</p>
+</div>
+
+<div className=' w-full  min-h-0 py-2'>
+ <p>Our stay at the house was lovely and relaxing. Delicious food, and lovely staff. We will be back.</p>
+</div>
+</div>
+
+
+<div className='  max-md:w-full w-1/2    '>
+
+
+<div className=' flex '>
+  <img className=' p-2 w-16 h-16 rounded-full content-center  object-cover ' src="https://imgv3.fotor.com/images/slider-image/A-blurry-image-of-a-woman-wearing-red.jpg" alt="" />
+
+  <div className='p-2'>
+    <p>A Lady</p>
+    <p className=' text-sm  font-light text-gray-500'>Pune,India</p>
+  </div>
+</div>
+
+<div className=' flex items-center'>
+<div className=' flex'>
+  <FaStar className="  h-3 w-3"/>
+  <FaStar className="  h-3 w-3"/>
+  <FaStar className="  h-3 w-3"/>
+  <FaStar className="  h-3 w-3"/>
+  <FaStar className="  h-3 w-3"/>
+</div>
+ <p className=' ml-2  text-xs font-bold'> • 3 Weeks Ago</p>
+</div>
+
+<div className=' w-full  min-h-0 py-2'>
+ <p>Our stay at the house was lovely and relaxing. Delicious food, and lovely staff. We will be back.</p>
+</div>
+</div>
+
+
+<div className='  max-md:w-full w-1/2    '>
+
+
+<div className=' flex '>
+  <img className=' p-2 w-16 h-16 rounded-full content-center  object-cover ' src="https://imgv3.fotor.com/images/slider-image/A-blurry-image-of-a-woman-wearing-red.jpg" alt="" />
+
+  <div className='p-2'>
+    <p>A Lady</p>
+    <p className=' text-sm  font-light text-gray-500'>Pune,India</p>
+  </div>
+</div>
+
+<div className=' flex items-center'>
+<div className=' flex'>
+  <FaStar className="  h-3 w-3"/>
+  <FaStar className="  h-3 w-3"/>
+  <FaStar className="  h-3 w-3"/>
+  <FaStar className="  h-3 w-3"/>
+  <FaStar className="  h-3 w-3"/>
+</div>
+ <p className=' ml-2  text-xs font-bold'> • 3 Weeks Ago</p>
+</div>
+
+<div className=' w-full  min-h-0 py-2'>
+ <p>Our stay at the house was lovely and relaxing. Delicious food, and lovely staff. We will be back.</p>
+</div>
+</div>
+
+<div className='  max-md:w-full w-1/2    '>
+
+
+<div className=' flex '>
+  <img className=' p-2 w-16 h-16 rounded-full content-center  object-cover ' src="https://imgv3.fotor.com/images/slider-image/A-blurry-image-of-a-woman-wearing-red.jpg" alt="" />
+
+  <div className='p-2'>
+    <p>A Lady</p>
+    <p className=' text-sm  font-light text-gray-500'>Pune,India</p>
+  </div>
+</div>
+
+<div className=' flex items-center'>
+<div className=' flex'>
+  <FaStar className="  h-3 w-3"/>
+  <FaStar className="  h-3 w-3"/>
+  <FaStar className="  h-3 w-3"/>
+  <FaStar className="  h-3 w-3"/>
+  <FaStar className="  h-3 w-3"/>
+</div>
+ <p className=' ml-2  text-xs font-bold'> • 3 Weeks Ago</p>
+</div>
+
+<div className=' w-full  min-h-0 py-2'>
+ <p>Our stay at the house was lovely and relaxing. Delicious food, and lovely staff. We will be back.</p>
+</div>
+</div>
+           
+
+
+         
+        </div>
+
+
+        
+        <div className=' w-full p-10 max-md:p-4'>
+
+       
+          <button className=' p-2  bg-white border-2 border-black rounded-lg'>Show All Reviews</button>
+        
+        </div>
+        </div>
        </div>
       
      </div>
 
 
-
+{/* 
+   show Calender Desktop */}
+   {showCalendar&&<div className=' fixed left-0 top-0 right-0 bottom-0 bg-black/75 flex justify-center items-center'>
+      <div className='   bg-white shadow-2xl p-2 rounded-2xl'>
+        <div className='  mb-2'>
+          <button className='  h-8 w-8 rounded-full hover:bg-gray-200  flex justify-center items-center  ' onClick={handlerShowCalendar}>X</button>
+        </div>
+    <DateRange 
+       
+       onChange={item => setDate([item.selection] as any)}
+      
+     rangeColors={["black"]}
+       ranges={date as any}
+       months={1}
+       direction="horizontal"
+       minDate={new Date() as any}
+       maxDate={  maxDateOfCalendar }
+     />
+     </div>
+    </div>
+} 
    {photoTourBox&&<div className=' fixed top-0 left-0 right-0 bottom-0 bg-white items-center  flex flex-col  overflow-y-auto '>
 
 <div className=' flex  w-full justify-end    p-4' > <button className='  bg-gray-100 hover:bg-gray-300  w-10 h-10 rounded-lg' onClick={handlerShowPhotoTourBox}>X</button> </div>
@@ -228,6 +506,8 @@ const page = ({ params }: { params: { id: string } }) => {
    
 
 </div>}
+
+
    </div>
   )
 }
