@@ -462,7 +462,7 @@ nextDay.setDate(today.getDate() + 2);
         <div className=' w-full p-10 max-md:p-4'>
 
        
-          <button className=' p-2  bg-white border-2 border-black rounded-lg'>Show All Reviews</button>
+          <button className=' p-2 max-md:w-full  bg-white border-2 border-black rounded-lg'>Show All Reviews</button>
         
         </div>
         </div>
@@ -506,6 +506,8 @@ nextDay.setDate(today.getDate() + 2);
    
 
 </div>}
+
+
 
 
    </div>

@@ -80,9 +80,7 @@ const hotelSchema = new Schema({
     checkouttime:{
         type:Date
     },
-    hostlanguage:{
-        type:Date
-    },
+  
 
 
     reviews:[
@@ -94,12 +92,37 @@ const hotelSchema = new Schema({
                 type:String,
                 
             },
-            rating:{
+            cleanliness:{
                 type:Number,
+                required:true
                 
+            },
+            accuracy:{
+                type:Number,
+                required:true
+                
+            },
+            checkin:{
+                type:Number,
+                required:true
+                
+            },
+            communication:{
+                type:Number,
+                required:true
+            },
+
+            location:{
+                type:Number,
+                required:true
+            },
+            value:{
+                 type:Number,
+                 required:true
             },
             comment:{
                 type:String,
+                
                
             }
         }
@@ -108,10 +131,51 @@ const hotelSchema = new Schema({
         type:Number,
         default:0
     },
-    ratings:{
+
+    cleanlinessrating:{
         type:Number,
         default:0
     },
+
+    accuracyrating:{
+        type:Number,
+        default:0
+    },
+
+    checkinrating:{
+        type:Number,
+        default:0
+    },
+
+
+    
+    checkinrating:{
+        type:Number,
+        default:0
+    },
+
+    communicationrating:{
+        type:Number,
+        default:0
+    },
+    
+    locationrating:{
+        type:Number,
+        default:0
+    },
+
+
+    valuerating:{
+        type:Number,
+        default:0
+    },
+
+
+    overallrating:{
+        type:Number,
+        default:0
+    },
+
     location:{
         type:String,
         required:true

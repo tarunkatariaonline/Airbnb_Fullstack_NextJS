@@ -3,38 +3,16 @@
    - User Schema Create
    - Error Handler To Handle Errors Which Occurs During APIs Request
 
-    -USER APIs
-      -Register API
-       -Get Data From Post Request
-         -Check Data Is Properly Filled Or Not
-       -Install bcrypt
-         -To Hash/Encrypt The Password
-       -Save Data In Database Using User Schema  
-       -Install jwt
-         -To Genrate Auth Token By Taking User ID
-       -Cookies from next/headers
-         -To Save Cookies  For 15 Days
-       -Response User Data     
-     -Login API
-       -Get Data From Post Request
-         -Check Data Is Properly Filled Or Not
-       -Find User Through Email(unique) In Database User Schema 
-       -Used Bcrypt To Compare Password 
-       -Used JWT Genrate Auth Token By Taking User ID
-       -Cookies from next/headers
-          -To Save Cookies 
-       -Response User Data   
-     -About Me API
-       -Create A MiddleWare To AuthUser
-         -Get JWT Token From Saved Cookies
-         -Verify User Using JWT Verify Method
-         -If User Is Verified Return User Else Error Handler Error Provided
-       -Response According To Data and Response Data  
-
+    - USER APIs
+      - Register API
+      - Login API
+      - About Me API
+      
 
 - hotel apis :
   - create hotel api
   - get hotel api
+   - data according to values
   - created destination suggestion api
   - get destination suggestion
   
@@ -49,7 +27,12 @@
      - make responsive
      - review section
      - host about section
-     - hotel about section     
+     - hotel about section  
+  - 21-02-2024   
+    - fetching location from api
+    - implement redux toolkit
+    - seprated components
+
           
 
 
